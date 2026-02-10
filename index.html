@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>💘 San Valentín</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: #ffd6e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.card {
+  background: white;
+  padding: 35px 25px;
+  border-radius: 25px;
+  text-align: center;
+  width: 90%;
+  max-width: 340px;
+  box-shadow: 0 15px 35px rgba(0,0,0,.2);
+}
+
+h1 {
+  font-family: 'Pacifico', cursive;
+  color: #ff4d6d;
+  font-size: 32px;
+}
+
+h2 {
+  color: #ff4d6d;
+  font-weight: 400;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 14px;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.yes {
+  background: #ff4d6d;
+  color: white;
+}
+
+.no {
+  background: #f2f2f2;
+}
+
+.hint {
+  margin-top: 15px;
+  color: #ff4d6d;
+  font-size: 15px;
+  min-height: 24px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="card">
+  <h1>Holiii Polet 💌</h1>
+  <p>Tengo algo que preguntarte…</p>
+  <h2>¿Quieres ser mi 14 de febrero?</h2>
+
+  <button class="yes" onclick="showThanks()">Sí 💖</button>
+  <button class="no" onclick="noClick()">No</button>
+
+  <div class="hint" id="hint">😏</div>
+</div>
+
+<script>
+const frases = [
+  "Dale, sí 😏",
+  "Apura pues 🙈",
+  "No te hagas 💖",
+  "Ya sabes que sí 😌",
+  "No seas así 🥺"
+];
+
+function noClick() {
+  document.getElementById("hint").innerText =
+    frases[Math.floor(Math.random() * frases.length)];
+}
+
+// 👉 Tarjeta intermedia
+function showThanks() {
+  document.getElementById("card").innerHTML = `
+    <h1>💖 Gracias por decir que sí</h1>
+    <p>Me hiciste sonreír 😌</p>
+    <p style="margin-top:10px;">
+      Ahora solo falta coordinar nuestro 14 bonito 💌
+    </p>
+    <button class="yes" onclick="goWhatsApp()">Continuar 💬</button>
+  `;
+}
+
+// 👉 WhatsApp
+function goWhatsApp() {
+  const mensaje = encodeURIComponent(
+    "Acepté 😳💖 quiero ser tu 14 de febrero"
+  );
+
+  window.location.href =
+    "https://wa.me/593993673602?text=" + mensaje;
+}
+</script>
+
+</body>
+</html>
+
