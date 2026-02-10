@@ -18,9 +18,8 @@ body {
 }
 
 .card {
-  position: relative;
   background: white;
-  padding: 35px 25px 70px;
+  padding: 35px 25px;
   border-radius: 25px;
   text-align: center;
   width: 90%;
@@ -42,7 +41,7 @@ h2 {
 button {
   width: 100%;
   padding: 14px;
-  margin-top: 12px;
+  margin-top: 14px;
   border: none;
   border-radius: 30px;
   font-size: 16px;
@@ -56,18 +55,13 @@ button {
 
 .no {
   background: #f2f2f2;
-  position: absolute;
-  left: 25px;
-  bottom: 20px;
-  width: calc(100% - 50px);
-  transition: transform 0.25s ease;
 }
 
 .hint {
-  margin-top: 12px;
+  margin-top: 15px;
   color: #ff4d6d;
   font-size: 15px;
-  min-height: 20px;
+  min-height: 24px;
 }
 </style>
 </head>
@@ -79,38 +73,40 @@ button {
   <p>Tengo algo que preguntarte…</p>
   <h2>¿Quieres ser mi 14 de febrero?</h2>
 
-  <button class="yes" onclick="yes()">Sí 💖</button>
-  <button class="no" id="noBtn" onclick="noClick()" onmouseover="moveNo()">No</button>
+  <button class="yes" onclick="showThanks()">Sí 💖</button>
+  <button class="no" onclick="noClick()">No</button>
 
   <div class="hint" id="hint">😏</div>
 </div>
 
 <script>
-const hints = [
-  "¿Por qué no? 🥺",
+const frases = [
   "Dale, sí 😏",
-  "No te hagas 🙈",
-  "Ya sabes la respuesta 💖",
-  "Ándale pues 😌"
+  "Apura pues 🙈",
+  "No te hagas 💖",
+  "Ya sabes que sí 😌",
+  "No seas así 🥺"
 ];
 
-function moveNo() {
-  const noBtn = document.getElementById("noBtn");
-  const hint = document.getElementById("hint");
-
-  const x = Math.random() * 120 - 60;
-  const y = Math.random() * 80 - 40;
-
-  noBtn.style.transform = `translate(${x}px, ${y}px)`;
-  hint.innerText = hints[Math.floor(Math.random() * hints.length)];
-}
-
 function noClick() {
-  const hint = document.getElementById("hint");
-  hint.innerText = "Dale, sí 😏💘";
+  document.getElementById("hint").innerText =
+    frases[Math.floor(Math.random() * frases.length)];
 }
 
-function yes() {
+// 👉 Tarjeta intermedia
+function showThanks() {
+  document.getElementById("card").innerHTML = `
+    <h1>💖 Gracias por decir que sí</h1>
+    <p>Me hiciste sonreír 😌</p>
+    <p style="margin-top:10px;">
+      Ahora solo falta coordinar nuestro 14 bonito 💌
+    </p>
+    <button class="yes" onclick="goWhatsApp()">Continuar 💬</button>
+  `;
+}
+
+// 👉 WhatsApp
+function goWhatsApp() {
   const mensaje = encodeURIComponent(
     "Acepté 😳💖 quiero ser tu 14 de febrero"
   );
@@ -122,3 +118,4 @@ function yes() {
 
 </body>
 </html>
+
